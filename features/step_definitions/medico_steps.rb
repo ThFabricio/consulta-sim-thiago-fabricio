@@ -36,3 +36,26 @@ end
 Then('eu vejo uma mensagem que o medico foi cadastrado com sucesso') do
   expect(page).to have_content('Medico was successfully created.')
 end
+
+#Cenarios implementados para Atividade
+
+When('eu clico em editar o medico com CRM {string}') do |crm|
+  click_button 'Edit this medico'
+end
+
+When('eu edito os campo de Email {string}') do |email|
+  fill_in 'medico[email]', :with => email
+  click_button 'Update Medico'
+end
+
+Then('eu vejo uma mensagem que o medico foi editado com sucesso') do
+  expect(page).to have_content('Medico was successfully updated.')
+end
+
+When('eu clico em visualizar o medico com CRM {string}') do |crm|
+  click_link 'Show this medico'
+end
+
+Then('eu vejo os dados do medico') do
+  expect(page).to have_content('Medico')
+end
